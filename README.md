@@ -17,7 +17,8 @@
 **BPMN диаграмма**
 
 BPMN диаграмма — это создание стандартного набора условных обозначений, понятных всем бизнес-пользователям. 
-![image](https://user-images.githubusercontent.com/105597940/195647358-665bfe1d-57a6-4a8a-bf78-a5f6babfa2df.png)
+![Без имени](https://user-images.githubusercontent.com/105597940/195761686-b5caedd7-f40c-4fd6-aa66-c67bf97db3e1.png)
+
 
 **Use case модель**
 
