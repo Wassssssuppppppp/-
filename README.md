@@ -55,7 +55,7 @@
 
 Сравнительный анализ данных 2 решений представлен на рисунке 4
 
-![2022-11-10 (4)](https://user-images.githubusercontent.com/105597940/201114079-5db8d0df-2c4d-41b0-8077-498e79beeee9.png)
+![2022-11-10 (6)](https://user-images.githubusercontent.com/105597940/201151664-6bbadb83-b577-4f36-b98b-31af9305d318.png)
 
 Рисунок 4
 
