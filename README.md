@@ -36,7 +36,7 @@
 
 ![image](https://user-images.githubusercontent.com/105597940/200940883-876e5fd3-3f99-4f19-aa09-41d148be0107.png)
 
-Рисунок 1
+### <p align="center">Рисунок 1 - Use case модель
 
 ## 1.2 Описание процесса покупки в магазине <a name="Описание"></a>
 
@@ -44,17 +44,17 @@
 
 Весь процесс описан на рисунке 2 
 
-**BPMN модель**
+### BPMN модель
 
 ![Безымянный 1 (2)](https://user-images.githubusercontent.com/105597940/200934762-ecc5d71c-ecf7-4b1e-9660-bad4cda44e22.png)
 
-Рисунок 2 
+### <p align="center">Рисунок 2 - BPMN модель 
 
 ## 1.3 IDEF модель <a name="IDEF"></a>
 
 ![image](https://user-images.githubusercontent.com/105597940/200942205-4a96184c-b9e0-47f1-acb2-604642a560b2.png)
 
-Рисунок 3 
+### <p align="center">Рисунок 3 - IDEF модель 
 
 ## 1.4 Проблематика предметной области <a name="Проблематика"></a>
 
