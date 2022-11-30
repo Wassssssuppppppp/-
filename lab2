@@ -1,0 +1,146 @@
+using System.IO;
+using System.Text.Json;
+
+public class Zakaz
+{
+    public int OrderCode { get; set; }
+
+    public int? ClientCode { get; set; }
+
+    public int? ProductCode { get; set; }
+
+    public Employee? EmployeeCode { get; set; }
+
+    public int? ServiceCode { get; set; }
+
+    public int? StoreAddressesCode { get; set; }
+
+    public string Status { get; set; }
+
+    public Zakaz() { }
+
+    public Zakaz(int OrderCode, int ClientCode, int ProductCode, Employee EmployeeCode, int ServiceCode, int StoreAddressesCode, string Status )
+    {
+        this.OrderCode = OrderCode;
+        this.ClientCode = ClientCode;
+        this.ProductCode = ProductCode;
+        this.EmployeeCode = EmployeeCode;
+        this.ServiceCode = ServiceCode;
+        this.StoreAddressesCode = StoreAddressesCode;
+        this.Status = Status;
+    }
+}
+
+public class Employee
+{
+    public int EmployeeCode { get; set; }
+
+    public string FIOemployee { get; set; }
+
+    public int PositionCode { get; set; }
+
+
+    public Employee() { }
+
+    public Employee(int EmployeeCode, string FIOemployee, int PositionCode)
+    {
+        this.EmployeeCode = EmployeeCode;
+        this.FIOemployee = FIOemployee;
+        this.PositionCode = PositionCode;
+    }
+}
+
+
+
+public class JsonHandler<T> where T : class
+{
+    private string fileName;
+    JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+
+
+    public JsonHandler() { }
+
+    public JsonHandler(string fileName)
+    {
+        this.fileName = fileName;
+    }
+
+
+    public void SetFileName(string fileName)
+    {
+        this.fileName = fileName;
+    }
+
+    public void Write(List<T> list)
+    {
+        string jsonString = JsonSerializer.Serialize(list, options);
+
+        if (new FileInfo(fileName).Length == 0)
+        {
+            File.WriteAllText(fileName, jsonString);
+        }
+        else
+        {
+            Console.WriteLine("Указанный путь к файлу не является пустым");
+        }
+    }
+
+    public void Delete()
+    {
+        File.WriteAllText(fileName, string.Empty);
+    }
+
+    public void Rewrite(List<T> list)
+    {
+        string jsonString = JsonSerializer.Serialize(list, options);
+
+        File.WriteAllText(fileName, jsonString);
+    }
+
+    public void Read(ref List<T> list)
+    {
+        if (File.Exists(fileName))
+        {
+            if (new FileInfo(fileName).Length != 0)
+            {
+                string jsonString = File.ReadAllText(fileName);
+                list = JsonSerializer.Deserialize<List<T>>(jsonString);
+            }
+            else
+            {
+                Console.WriteLine("Указанный путь к файлу пуст");
+            }
+        }
+    }
+
+    public void OutputJsonContents()
+    {
+        string jsonString = File.ReadAllText(fileName);
+
+        Console.WriteLine(jsonString);
+    }
+
+    public void OutputSerializedList(List<T> list)
+    {
+        Console.WriteLine(JsonSerializer.Serialize(list, options));
+    }
+}
+
+
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<Zakaz> partsList = new List<Zakaz>();
+
+        JsonHandler<Zakaz> partsHandler = new JsonHandler<Zakaz>("Files.json");
+
+        partsList.Add(new Zakaz(1, 1, 1, new Employee(1, "Pashkov Evgeni Aleksandrovich", 1),1, 1, "Completed"));
+        partsList.Add(new Zakaz(2, 3, 4, new Employee(2, "Aleksashkin Oleg Alekseevich", 2), 2, 1, "Completed"));
+        partsList.Add(new Zakaz(3, 4, 5, new Employee(3, "Poslavski German Igorevich", 3), 2, 1, "Completed"));
+        partsList.Add(new Zakaz(6, 7, 8, new Employee(4, "Petrochenko Mikhail Vladimirovich", 4), 1, 2, "Completed"));
+        partsHandler.Rewrite(partsList);
+        partsHandler.OutputJsonContents();
+    }
+} 
